@@ -7,7 +7,6 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TableRow
@@ -43,16 +42,8 @@ class MainActivity : AppCompatActivity() {
 
         // puzzle cells
         cells = Array(9) { arrayOfNulls<Cell>(9) }
-        val rowLp = TableLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            1.0f
-        )
-        val cellLp = TableRow.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            1.0f
-        )
+        val rowLp = TableLayout.LayoutParams(0, TableLayout.LayoutParams.WRAP_CONTENT)
+        val cellLp = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT)
         for (i in 0..8) {
             val row = TableRow(this)
             for (j in 0..8) {
