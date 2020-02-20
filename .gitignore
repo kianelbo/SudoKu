@@ -1,0 +1,35 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+
+# Built application files
+*.apk
+*.aar
+*.ap_
+*.aab
+release/
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+
+# Log Files
+*.log
+
+# Version control
+vcs.xml

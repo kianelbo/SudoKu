@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SudoKu</string>
+    <string name="resume">Resume</string>
+    <string name="new_game">New Game</string>
+    <string name="stats">Stats</string>
+    <string name="about">About</string>
+    <string name="exit">Exit</string>
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
+</resources>
