@@ -1,8 +1,10 @@
 package com.kian.sudoku
 
-class SudokuModel(difficulty: Int) {
+class SudokuModel(difficultyDegree: Int) {
     val board: Array<CharArray>
-    lateinit var startingBoard: Array<CharArray>
+    var startingBoard: Array<CharArray>
+        private set
+    var difficulty: String
         private set
     var progress: Int
         private set
@@ -37,6 +39,9 @@ class SudokuModel(difficulty: Int) {
     }
 
     companion object {
+        const val EASY_CONST: Int = 32
+        const val MEDIUM_CONST: Int = 45
+        const val HARD_CONST: Int = 60
         private val prototype = arrayOf(
             "827154396".toCharArray(), "965327148".toCharArray(), "341689752".toCharArray(),
             "593468271".toCharArray(), "472513689".toCharArray(), "618972435".toCharArray(),
@@ -51,6 +56,11 @@ class SudokuModel(difficulty: Int) {
     }
 
     init {
+        difficulty = when (difficultyDegree) {
+            EASY_CONST -> "Easy"
+            HARD_CONST -> "Hard"
+            else -> "Medium"
+        }
         // creating a permutation
         val letters = mutableListOf('1', '2', '3', '4', '5', '6', '7', '8', '9')
         letters.shuffle()
@@ -60,12 +70,12 @@ class SudokuModel(difficulty: Int) {
         for (i in 0..8) for (j in 0..8) board[i][j] = letters[prototype[i][j].toInt() - 49]
         // cells to be erased
         val randomsSet: MutableSet<Int> = mutableSetOf()
-        while (randomsSet.size < difficulty) randomsSet.add((0..80).random())
+        while (randomsSet.size < difficultyDegree) randomsSet.add((0..80).random())
         val spots = randomsSet.toList()
         // erasing from the board
-        for (i in 0 until difficulty) board[spots[i] / 9][spots[i] % 9] = '0'
+        for (i in 0 until difficultyDegree) board[spots[i] / 9][spots[i] % 9] = '0'
         // saving predefined cells
         startingBoard = Array(9) { board[it].clone() }
-        progress = 81 - difficulty
+        progress = 81 - difficultyDegree
     }
 }

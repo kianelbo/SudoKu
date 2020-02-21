@@ -110,16 +110,24 @@ class MainActivity : AppCompatActivity() {
         progressView.text = String.format("%d/%d", model.progress, 81)
         // check win
         if (model.progress == 81 && model.hasWon()) {
+            // updating stats
+            val statsPrefs = getSharedPreferences("STATS_PREFS", Context.MODE_PRIVATE)
+            val statsEditor = statsPrefs.edit()
+            val previousAvg = statsPrefs.getLong(model.difficulty + "Time", 0)
+            var games = statsPrefs.getInt(model.difficulty + "Games", 0)
+            val newAvg = (previousAvg * games + timeHandler!!.elapsedTime / 1000) / ++games
+            statsEditor.putLong(model.difficulty + "Time", newAvg)
+            statsEditor.putInt(model.difficulty + "Games", games)
+            statsEditor.apply()
+
+            // showing win message
             val builder = AlertDialog.Builder(this)
             builder.setMessage("Congratulations!\nCompleted on " + timeView.text)
                 .setCancelable(false)
                 .setPositiveButton("OK") { _, _ ->
-                    val prefsEditor = getSharedPreferences(
-                        "SAVE_PREFS",
-                        Context.MODE_PRIVATE
-                    ).edit()
-                    prefsEditor.putBoolean("Saved", false)
-                    prefsEditor.apply()
+                    val saveEditor = getSharedPreferences("SAVE_PREFS", Context.MODE_PRIVATE).edit()
+                    saveEditor.putBoolean("Saved", false)
+                    saveEditor.apply()
                     val intent = Intent(this@MainActivity, MenuActivity::class.java)
                     startActivity(intent)
                 }

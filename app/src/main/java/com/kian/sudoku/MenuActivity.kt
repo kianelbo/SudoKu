@@ -5,8 +5,11 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import kotlinx.android.synthetic.main.activity_menu.*
+import com.kian.sudoku.SudokuModel.Companion.EASY_CONST
+import com.kian.sudoku.SudokuModel.Companion.HARD_CONST
+import com.kian.sudoku.SudokuModel.Companion.MEDIUM_CONST
+
 
 class MenuActivity : AppCompatActivity() {
 
@@ -17,9 +20,9 @@ class MenuActivity : AppCompatActivity() {
         // new game button
         newGameButton.setOnClickListener {
             val difficulty: Int = when (radioDifficulty.checkedRadioButtonId) {
-                easyRadio.id -> 32
-                hardRadio.id -> 60
-                else -> 45
+                easyRadio.id -> EASY_CONST
+                hardRadio.id -> HARD_CONST
+                else -> MEDIUM_CONST
             }
 
             val intent = Intent(this, MainActivity::class.java)
@@ -35,20 +38,24 @@ class MenuActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         else resumeButton.isEnabled = false
-    }
 
-    // about button
-    fun showAbout(view: View) {
-        val dialogBuilder = AlertDialog.Builder(this)
-        dialogBuilder.setTitle(R.string.app_name)
-        dialogBuilder.setMessage("Android Sudoku\nCreated by kianelbo\nVersion 1.1")
-//        dialogBuilder.setIcon(android.R.drawable.ic_dialog_alert)
-        val alertDialog: AlertDialog = dialogBuilder.create()
-        alertDialog.show()
-    }
+        // stats button
+        statsButton.setOnClickListener {
+            startActivity(Intent(this, StatsActivity::class.java))
+        }
 
-    // exit button
-    fun exit(view: View) {
-        finishAndRemoveTask()
+        // about button
+        aboutButton.setOnClickListener {
+            val dialogBuilder = AlertDialog.Builder(this)
+            val version = packageManager.getPackageInfo(packageName, 0).versionName
+            dialogBuilder.setTitle("Android Sudoku")
+            dialogBuilder.setMessage("Created by kianelbo - version $version")
+            dialogBuilder.create().show()
+        }
+
+        // exit button
+        exitButton.setOnClickListener {
+            finishAndRemoveTask()
+        }
     }
 }

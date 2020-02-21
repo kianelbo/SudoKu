@@ -3,9 +3,15 @@
     <string name="resume">Resume</string>
     <string name="new_game">New Game</string>
     <string name="stats">Stats</string>
+    <string name="reset">Reset Stats</string>
     <string name="about">About</string>
     <string name="exit">Exit</string>
     <string name="easy">Easy</string>
     <string name="medium">Medium</string>
     <string name="hard">Hard</string>
+    <string name="games">games</string>
+    <string name="avg_time">avg. time</string>
+    <string name="total_games">total games</string>
+    <string name="total_time">total time</string>
+    <string name="zero">0</string>
 </resources>
