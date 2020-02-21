@@ -33,7 +33,6 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/gamesLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
@@ -45,7 +44,6 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/timeLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
@@ -62,7 +60,6 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/easyLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
@@ -98,7 +95,6 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/mediumLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
@@ -134,7 +130,6 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/hardLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
@@ -171,7 +166,6 @@
             android:paddingTop="24sp">
 
             <TextView
-                android:id="@+id/totalGamesLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20sp"
@@ -185,7 +179,6 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/totalTimeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20sp"
